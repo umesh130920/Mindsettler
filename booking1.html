@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindSettler - Consultation Sessions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #3F2965;
+            --secondary: #Dd1764;
+            --light: #f8f9fa;
+            --dark: #2c1a47;
+            --light-purple: #f5f2f9;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            color: #333;
+            line-height: 1.6;
+            background-color: #fefefe;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation - UPDATED */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(63, 41, 101, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            transform: translateY(-2px);
+        }
+
+        .logo i {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links li {
+            margin-left: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+            transition: var(--transition);
+            padding: 8px 16px;
+            border-radius: 4px;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+            background-color: var(--light-purple);
+        }
+
+        /* UPDATED BUTTONS */
+        .nav-button {
+            background-color: var(--secondary);
+            color: white;
+            padding: 10px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-block;
+            border: 2px solid var(--secondary);
+        }
+
+        .nav-button:hover {
+            background-color: white;
+            color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(221, 23, 100, 0.2);
+        }
+
+        .cta-button {
+            background-color: var(--secondary);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+            border: 2px solid var(--secondary);
+        }
+
+        .cta-button:hover {
+            background-color: white;
+            color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(221, 23, 100, 0.2);
+        }
+
+        /* Hero Section */
+        .sessions-hero {
+            background: linear-gradient(rgba(63, 41, 101, 0.9), rgba(63, 41, 101, 0.85)), url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .sessions-hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .sessions-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 4px;
+            background-color: var(--secondary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Session Options */
+        .session-options {
+            background-color: var(--light-purple);
+        }
+
+        .session-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .session-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(63, 41, 101, 0.1);
+            transition: var(--transition);
+            border-top: 5px solid var(--primary);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .session-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(63, 41, 101, 0.15);
+            border-top-color: var(--secondary);
+        }
+
+        .session-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .session-header h3 {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+        }
+
+        .session-header .session-duration {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .session-body {
+            padding: 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .session-features {
+            list-style: none;
+            margin-bottom: 30px;
+            flex-grow: 1;
+        }
+
+        .session-features li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .session-features i {
+            color: var(--secondary);
+            margin-right: 10px;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        .first-session-card {
+            position: relative;
+            border-top: 5px solid var(--secondary);
+        }
+
+        .first-session-badge {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background-color: var(--secondary);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* Session Duration */
+        .duration-section {
+            text-align: center;
+        }
+
+        .duration-circle {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            margin: 0 auto 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            box-shadow: 0 10px 30px rgba(63, 41, 101, 0.2);
+        }
+
+        .duration-circle .time {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .duration-circle .unit {
+            font-size: 1.3rem;
+            opacity: 0.9;
+        }
+
+        .duration-description {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        /* Platform Options */
+        .platform-container {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+            margin-top: 40px;
+        }
+
+        .platform-info {
+            flex: 1;
+        }
+
+        .platform-visual {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .platform-option {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(63, 41, 101, 0.08);
+            border-left: 4px solid var(--primary);
+            transition: var(--transition);
+        }
+
+        .platform-option:hover {
+            transform: translateX(10px);
+            border-left-color: var(--secondary);
+            box-shadow: 0 8px 25px rgba(63, 41, 101, 0.12);
+        }
+
+        .platform-option h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+        }
+
+        .platform-option i {
+            color: var(--secondary);
+            margin-right: 10px;
+            font-size: 1.3rem;
+        }
+
+        /* Session Booking CTA */
+        .booking-cta {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .booking-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .booking-cta p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column h3 {
+            color: var(--secondary);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+
+        .footer-links {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links:hover {
+            color: var(--secondary);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        .social-icons a {
+            color: white;
+            margin-right: 15px;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .platform-container {
+                flex-direction: column;
+            }
+            
+            .session-cards {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 5px 10px;
+            }
+            
+            .sessions-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .duration-circle {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .duration-circle .time {
+                font-size: 2.2rem;
+            }
+            
+            /* Mobile nav adjustments */
+            .nav-button, .nav-links a {
+                padding: 8px 14px;
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+            }
+            
+            .nav-links li {
+                margin: 5px 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .nav-links a, .nav-button {
+                display: block;
+                width: 100%;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation - UPDATED -->
+    <header>
+        <div class="container">
+            <div class="nav-container">
+                <!-- Logo now wraps in an anchor tag -->
+                <a href="sessions.html" class="logo">
+                    <i class="fas fa-brain"></i>
+                    <span class="logo-text">MindSettler</span>
+                </a>
+                <ul class="nav-links">
+                    <!-- Removed all individual section links -->
+                    <!-- Only keeping Booking Sessions and Start Your Journey -->
+                    <li><a href="booking1.html" class="nav-button">Booking Sessions</a></li>
+                    <li><a href="services.html" class="nav-button">Cooperative Services</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="sessions-hero" id="home">
+        <div class="container">
+            <h1>Personalized Consultation Sessions</h1>
+            <p>Choose between online or offline sessions designed to meet your unique mental wellness needs. Each session is a 60-minute journey towards better understanding and emotional balance.</p>
+            <a href="#session-options" class="cta-button">Explore Session Options</a>
+        </div>
+    </section>
+
+    <!-- Session Duration -->
+    <section class="duration-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Session Duration</h2>
+                <p>Optimized for meaningful progress and comfortable engagement</p>
+            </div>
+            
+            <div class="duration-circle">
+                <div class="time">60</div>
+                <div class="unit">minutes</div>
+            </div>
+            
+            <div class="duration-description">
+                <p>Our sessions are carefully structured to last 60 minutes - the optimal duration for deep exploration while maintaining focus and energy. This timeframe allows for:</p>
+                <ul style="text-align: left; max-width: 600px; margin: 20px auto; padding-left: 20px;">
+                    <li style="margin-bottom: 10px;">Comprehensive check-in and goal setting</li>
+                    <li style="margin-bottom: 10px;">Focused psycho-education and discussion</li>
+                    <li style="margin-bottom: 10px;">Practical skill development and application</li>
+                    <li style="margin-bottom: 10px;">Thoughtful reflection and closure</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Session Options -->
+    <section id="session-options" class="session-options">
+        <div class="container">
+            <div class="section-title">
+                <h2>Choose Your Session Type</h2>
+                <p>Select the approach that best fits your needs and preferences</p>
+            </div>
+            
+            <div class="session-cards">
+                <!-- First Session Card -->
+                <div class="session-card first-session-card">
+                    <div class="first-session-badge">Most Important</div>
+                    <div class="session-header">
+                        <h3>First Session</h3>
+                        <div class="session-duration">60 Minutes • Introductory</div>
+                    </div>
+                    <div class="session-body">
+                        <p style="margin-bottom: 25px; font-weight: 600; color: var(--primary);">Your foundational step towards mental wellness</p>
+                        
+                        <ul class="session-features">
+                            <li><i class="fas fa-check-circle"></i> Comprehensive needs assessment</li>
+                            <li><i class="fas fa-check-circle"></i> Establishing therapeutic rapport</li>
+                            <li><i class="fas fa-check-circle"></i> Setting personalized wellness goals</li>
+                            <li><i class="fas fa-check-circle"></i> Introduction to MindSettler's approach</li>
+                            <li><i class="fas fa-check-circle"></i> Creating your initial wellness plan</li>
+                            <li><i class="fas fa-check-circle"></i> Q&A about the process and what to expect</li>
+                        </ul>
+                        
+                        <p style="color: var(--secondary); font-weight: 600; margin-top: auto;">
+                            <i class="fas fa-star"></i> Recommended as starting point for all new clients
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Online Session Card -->
+                <div class="session-card">
+                    <div class="session-header">
+                        <h3>Online Consultation</h3>
+                        <div class="session-duration">60 Minutes • Virtual</div>
+                    </div>
+                    <div class="session-body">
+                        <p style="margin-bottom: 25px; font-weight: 600; color: var(--primary);">Connect from the comfort of your space</p>
+                        
+                        <ul class="session-features">
+                            <li><i class="fas fa-check-circle"></i> Secure, encrypted video platform</li>
+                            <li><i class="fas fa-check-circle"></i> Flexible scheduling across time zones</li>
+                            <li><i class="fas fa-check-circle"></i> No travel time or commute required</li>
+                            <li><i class="fas fa-check-circle"></i> Access from anywhere with internet</li>
+                            <li><i class="fas fa-check-circle"></i> Screen sharing for resource review</li>
+                            <li><i class="fas fa-check-circle"></i> Digital worksheet integration</li>
+                        </ul>
+                        
+                        <p style="color: var(--primary); font-weight: 600; margin-top: auto;">
+                            <i class="fas fa-laptop-house"></i> Perfect for busy schedules or remote access
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Offline Session Card -->
+                <div class="session-card">
+                    <div class="session-header">
+                        <h3>Offline Consultation</h3>
+                        <div class="session-duration">60 Minutes • In-Person</div>
+                    </div>
+                    <div class="session-body">
+                        <p style="margin-bottom: 25px; font-weight: 600; color: var(--primary);">Traditional face-to-face connection</p>
+                        
+                        <ul class="session-features">
+                            <li><i class="fas fa-check-circle"></i> Conducted at our comfortable Studio</li>
+                            <li><i class="fas fa-check-circle"></i> Personal, face-to-face interaction</li>
+                            <li><i class="fas fa-check-circle"></i> Dedicated, distraction-free environment</li>
+                            <li><i class="fas fa-check-circle"></i> Physical resource materials available</li>
+                            <li><i class="fas fa-check-circle"></i> Tangible therapeutic tools and exercises</li>
+                            <li><i class="fas fa-check-circle"></i> Immediate physical presence and support</li>
+                        </ul>
+                        
+                        <p style="color: var(--primary); font-weight: 600; margin-top: auto;">
+                            <i class="fas fa-building"></i> Ideal for those preferring traditional therapy settings
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Platform Options -->
+    <section>
+        <div class="container">
+            <div class="section-title">
+                <h2>Where Sessions Happen</h2>
+                <p>Choose between our secure online platform or comfortable offline studio</p>
+            </div>
+            
+            <div class="platform-container">
+                <div class="platform-info">
+                    <h3 style="color: var(--primary); margin-bottom: 20px; font-size: 1.8rem;">Flexible Session Locations</h3>
+                    <p style="margin-bottom: 20px; font-size: 1.1rem;">MindSettler offers both virtual and physical spaces designed for psychological safety and comfort. Our environments are intentionally created to support your mental wellness journey.</p>
+                    <p style="margin-bottom: 30px; font-size: 1.1rem;">Whether you choose online convenience or offline personal connection, you'll experience the same structured, confidential, and supportive approach that defines MindSettler.</p>
+                    
+                    <div style="background-color: var(--light-purple); padding: 25px; border-radius: 10px; border-left: 4px solid var(--secondary);">
+                        <h4 style="color: var(--primary); margin-bottom: 10px;">Need Help Choosing?</h4>
+                        <p>Not sure which format is right for you? Contact us for a free 15-minute consultation to discuss your options and find the best fit for your needs.</p>
+                    </div>
+                </div>
+                
+                <div class="platform-visual">
+                    <div class="platform-option">
+                        <h4><i class="fas fa-video"></i> MindSettler Online Platform</h4>
+                        <p>Our secure, proprietary video platform designed specifically for psycho-educational sessions. Features include encrypted communication, digital whiteboard, resource library, and session recording (with consent).</p>
+                    </div>
+                    
+                    <div class="platform-option">
+                        <h4><i class="fas fa-building"></i> MindSettler Studio</h4>
+                        <p>Our physical location features comfortable, private consultation rooms designed for psychological safety. Located at 123 Wellness Street, with convenient access and a calming, professional atmosphere.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking CTA -->
+    <section id="booking-cta" class="booking-cta">
+        <div class="container">
+            <h2>Ready to Begin Your Journey?</h2>
+            <p>Book your first 60-minute session today and take the first step toward better mental wellness. Choose between online convenience or in-person connection at our studio.</p>
+            <a href="#" class="cta-button" style="background-color: white; color: var(--secondary);">Book Your Session Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>MindSettler</h3>
+                    <p>An online psycho-education and mental well-being platform that helps individuals understand their mental health and navigate life challenges.</p>
+                    <div class="social-icons" style="margin-top: 20px;">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Session Information</h3>
+                    <ul>
+                        <li><a href="#session-options" class="footer-links">Session Types</a></li>
+                        <li><a href="#session-options" class="footer-links">First Session</a></li>
+                        <li><a href="#" class="footer-links">Online Sessions</a></li>
+                        <li><a href="#" class="footer-links">Offline Sessions</a></li>
+                        <li><a href="index.html#how-it-works" class="footer-links">How It Works</a></li>
+                        <li><a href="index.html#faqs" class="footer-links">FAQs</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact & Location</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope" style="margin-right: 10px; color: var(--secondary);"></i> sessions@mindsettler.com</li>
+                        <li><i class="fas fa-phone" style="margin-right: 10px; color: var(--secondary);"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt" style="margin-right: 10px; color: var(--secondary);"></i> 123 Wellness Street</li>
+                        <li><i class="fas fa-clock" style="margin-right: 10px; color: var(--secondary);"></i> Mon-Fri: 9am-8pm, Sat: 10am-4pm</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 MindSettler. All rights reserved. | <a href="#" style="color: var(--secondary);">Privacy Policy</a> | <a href="#" style="color: var(--secondary);">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add animation to session cards on scroll
+        const observerOptions = {
+            threshold: 0.2
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe elements for animation
+        document.querySelectorAll('.session-card, .platform-option').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+        
+        // Animate duration circle on scroll
+        const durationCircle = document.querySelector('.duration-circle');
+        if(durationCircle) {
+            durationCircle.style.opacity = '0';
+            durationCircle.style.transform = 'scale(0.8)';
+            durationCircle.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            
+            const circleObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if(entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'scale(1)';
+                    }
+                });
+            }, observerOptions);
+            
+            circleObserver.observe(durationCircle);
+        }
+    </script>
+</body>
+</html>

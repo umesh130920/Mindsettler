@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindSettler - Your Mental Wellness Journey</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #3F2965;
+            --secondary: #Dd1764;
+            --light: #f8f9fa;
+            --dark: #2c1a47;
+            --light-purple: #f5f2f9;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            color: #333;
+            line-height: 1.6;
+            background-color: #fefefe;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation - UPDATED */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(63, 41, 101, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            transform: translateY(-2px);
+        }
+
+        .logo i {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links li {
+            margin-left: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+            transition: var(--transition);
+            padding: 8px 16px;
+            border-radius: 4px;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+            background-color: var(--light-purple);
+        }
+
+        /* UPDATED BUTTONS */
+        .nav-button {
+            background-color: var(--secondary);
+            color: white;
+            padding: 10px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-block;
+            border: 2px solid var(--secondary);
+        }
+
+        .nav-button:hover {
+            background-color: white;
+            color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(221, 23, 100, 0.2);
+        }
+
+        .hero-button {
+            background-color: var(--secondary);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-block;
+            border: 2px solid var(--secondary);
+            font-size: 1.1rem;
+        }
+
+        .hero-button:hover {
+            background-color: white;
+            color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(221, 23, 100, 0.25);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(63, 41, 101, 0.9), rgba(63, 41, 101, 0.85)), url('https://images.unsplash.com/photo-1494178270175-e96de2971df9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 4px;
+            background-color: var(--secondary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(63, 41, 101, 0.15);
+            border: 3px solid var(--primary);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .mission-vision {
+            display: flex;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .mission, .vision {
+            flex: 1;
+            background-color: var(--light-purple);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(63, 41, 101, 0.08);
+            border-left: 4px solid var(--secondary);
+        }
+
+        .mission h4, .vision h4 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .mission h4 i, .vision h4 i {
+            color: var(--secondary);
+            margin-right: 10px;
+        }
+
+        /* Psycho-Education Section */
+        .education-section {
+            background-color: var(--light-purple);
+        }
+
+        .education-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .education-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(63, 41, 101, 0.08);
+            transition: var(--transition);
+            border-top: 4px solid var(--primary);
+        }
+
+        .education-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(63, 41, 101, 0.15);
+            border-top-color: var(--secondary);
+        }
+
+        .card-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card-body {
+            padding: 25px;
+        }
+
+        .card-body h4 {
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        /* How It Works */
+        .steps-container {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-top: 40px;
+        }
+
+        .steps-container::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 10%;
+            right: 10%;
+            height: 3px;
+            background-color: var(--secondary);
+            z-index: 1;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            flex: 1;
+            max-width: 200px;
+        }
+
+        .step-icon {
+            width: 80px;
+            height: 80px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            border: 3px solid var(--secondary);
+            color: var(--primary);
+            font-size: 1.8rem;
+            box-shadow: 0 5px 15px rgba(63, 41, 101, 0.1);
+        }
+
+        .step h4 {
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        /* What Makes Us Different */
+        .differences-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .difference-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(63, 41, 101, 0.08);
+            text-align: center;
+            transition: var(--transition);
+            border: 2px solid var(--light-purple);
+        }
+
+        .difference-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(63, 41, 101, 0.15);
+            border-color: var(--primary);
+        }
+
+        .difference-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+
+        /* FAQs Section */
+        .faq-section {
+            background-color: var(--light-purple);
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-category {
+            margin-bottom: 40px;
+        }
+
+        .faq-category h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary);
+            display: inline-block;
+        }
+
+        .faq-category h3 i {
+            color: var(--secondary);
+            margin-right: 10px;
+        }
+
+        .faq-item {
+            background-color: white;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(63, 41, 101, 0.08);
+            transition: var(--transition);
+            border-left: 3px solid var(--primary);
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 5px 15px rgba(63, 41, 101, 0.12);
+            border-left-color: var(--secondary);
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .faq-question i {
+            color: var(--secondary);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-question.active i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-answer.active {
+            padding: 0 20px 20px;
+            max-height: 500px;
+        }
+
+        /* Policy Pages Modal */
+        .policy-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            overflow-y: auto;
+        }
+
+        .policy-modal.active {
+            display: block;
+        }
+
+        .policy-content {
+            background-color: white;
+            margin: 50px auto;
+            max-width: 800px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .policy-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 30px;
+            position: relative;
+        }
+
+        .policy-header h2 {
+            font-size: 2rem;
+            margin: 0;
+        }
+
+        .close-policy {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .close-policy:hover {
+            color: var(--secondary);
+            transform: scale(1.1);
+        }
+
+        .policy-body {
+            padding: 40px;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+
+        .policy-body h3 {
+            color: var(--primary);
+            margin: 25px 0 15px;
+            font-size: 1.4rem;
+        }
+
+        .policy-body p {
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        .policy-body ul {
+            margin: 15px 0 20px 20px;
+        }
+
+        .policy-body li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .required-checkbox {
+            margin: 25px 0;
+            padding: 20px;
+            background-color: var(--light-purple);
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .required-checkbox label {
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+            color: var(--primary);
+            cursor: pointer;
+        }
+
+        .required-checkbox input[type="checkbox"] {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--secondary);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column h3 {
+            color: var(--secondary);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+
+        .footer-links {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links:hover {
+            color: var(--secondary);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        .social-icons a {
+            color: white;
+            margin-right: 15px;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .policy-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .policy-link {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .policy-link:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .steps-container {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .step {
+                margin-bottom: 30px;
+                flex: 0 0 45%;
+            }
+            
+            .steps-container::before {
+                display: none;
+            }
+            
+            .policy-content {
+                margin: 20px;
+                max-width: calc(100% - 40px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 5px 10px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .mission-vision {
+                flex-direction: column;
+            }
+            
+            .step {
+                flex: 0 0 100%;
+            }
+            
+            /* Mobile nav adjustments */
+            .nav-button, .nav-links a {
+                padding: 8px 14px;
+                font-size: 0.9rem;
+            }
+            
+            .policy-body {
+                padding: 25px;
+                max-height: 80vh;
+            }
+            
+            .policy-header {
+                padding: 20px;
+            }
+            
+            .policy-header h2 {
+                font-size: 1.6rem;
+            }
+            
+            .policy-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+            }
+            
+            .nav-links li {
+                margin: 5px 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .nav-links a, .nav-button {
+                display: block;
+                width: 100%;
+                padding: 10px;
+            }
+            
+            .policy-body {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation - UPDATED -->
+    <header>
+        <div class="container">
+            <div class="nav-container">
+                <!-- Logo now wraps in an anchor tag -->
+                <a href="sessions.html" class="logo">
+                    <i class="fas fa-brain"></i>
+                    <span class="logo-text">MindSettler</span>
+                </a>
+                <ul class="nav-links">
+                    <!-- Removed all individual section links -->
+                    <!-- Only keeping Booking Sessions and Start Your Journey -->
+                    <li><a href="booking1.html" class="nav-button">Booking Sessions</a></li>
+                    <li><a href="services.html" class="nav-button">Cooperative Services</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Navigate Your Mental Wellness Journey with Clarity and Support</h1>
+            <p>MindSettler is an online psycho-education and mental well-being platform that helps individuals understand their mental health and navigate life challenges through structured online/offline sessions.</p>
+            <a href="#about" class="hero-button">Learn More About Us</a>
+        </div>
+    </section>
+
+    <!-- About MindSettler -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About MindSettler</h2>
+                <p>Our mission, vision, and approach towards psycho-education and mental wellness support.</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Your Partner in Mental Wellness</h3>
+                    <p>MindSettler was founded on the belief that everyone deserves access to mental health education and personalized guidance. We focus on awareness, guidance, and personalized support in a safe and confidential environment.</p>
+                    <p>Our approach combines evidence-based psycho-education with structured sessions that empower individuals to better understand their mental health and develop effective coping strategies.</p>
+                    
+                    <div class="mission-vision">
+                        <div class="mission">
+                            <h4><i class="fas fa-bullseye"></i> Our Mission</h4>
+                            <p>To democratize mental health education and provide accessible, structured support that helps individuals understand and navigate their mental wellness journey with confidence.</p>
+                        </div>
+                        <div class="vision">
+                            <h4><i class="fas fa-eye"></i> Our Vision</h4>
+                            <p>A world where mental health education is accessible to all, and every individual has the tools and support needed to achieve emotional balance and resilience.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="MindSettler team discussion">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Psycho-Education Awareness -->
+    <section id="education" class="education-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Psycho-Education Awareness</h2>
+                <p>Understanding mental health concepts in simple, accessible language.</p>
+            </div>
+            <div class="education-container">
+                <div class="education-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-brain"></i> Mental Health Basics</h3>
+                    </div>
+                    <div class="card-body">
+                        <h4>Understanding Your Mind</h4>
+                        <p>Learn the fundamentals of mental health, common emotional responses, and how to recognize when you might need support. We break down complex concepts into easy-to-understand language.</p>
+                    </div>
+                </div>
+                
+                <div class="education-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-tools"></i> Coping Strategies</h3>
+                    </div>
+                    <div class="card-body">
+                        <h4>Practical Tools for Daily Life</h4>
+                        <p>Discover evidence-based techniques for managing stress, anxiety, and emotional challenges. Our resources provide actionable steps you can apply immediately to improve your mental wellbeing.</p>
+                    </div>
+                </div>
+                
+                <div class="education-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-hands-helping"></i> Relationship & Communication</h3>
+                    </div>
+                    <div class="card-body">
+                        <h4>Building Healthier Connections</h4>
+                        <p>Explore how mental health affects relationships and learn communication strategies that foster understanding, empathy, and stronger connections with others.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works">
+        <div class="container">
+            <div class="section-title">
+                <h2>How MindSettler Works</h2>
+                <p>Your step-by-step journey from booking to session completion.</p>
+            </div>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h4>1. Self-Assessment</h4>
+                    <p>Begin with a confidential self-assessment to help us understand your needs.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h4>2. Book Session</h4>
+                    <p>Choose between online or offline sessions at your convenience.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <h4>3. Initial Consultation</h4>
+                    <p>Meet with a mental wellness guide for your structured initial session.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-road"></i>
+                    </div>
+                    <h4>4. Personalized Plan</h4>
+                    <p>Receive a customized wellness plan tailored to your specific needs.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h4>5. Progress & Support</h4>
+                    <p>Continue with follow-up sessions and track your progress over time.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What Makes Us Different -->
+    <section id="different" style="background-color: var(--light-purple);">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Makes MindSettler Different</h2>
+                <p>Our unique approach to mental wellness support</p>
+            </div>
+            <div class="differences-container">
+                <div class="difference-card">
+                    <div class="difference-icon">
+                        <i class="fas fa-sitemap"></i>
+                    </div>
+                    <h3>Structured Sessions</h3>
+                    <p>Our sessions follow a carefully designed structure that maximizes learning and growth, ensuring consistent progress toward your mental wellness goals.</p>
+                </div>
+                
+                <div class="difference-card">
+                    <div class="difference-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>Confidentiality</h3>
+                    <p>Your privacy is our priority. All sessions and personal information are protected with the highest level of security and confidentiality.</p>
+                </div>
+                
+                <div class="difference-card">
+                    <div class="difference-icon">
+                        <i class="fas fa-user-cog"></i>
+                    </div>
+                    <h3>Personalized Guidance</h3>
+                    <p>We recognize that every journey is unique. Our approach is tailored to your specific needs, circumstances, and personal goals.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQs Section -->
+    <section class="faq-section" id="faqs">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+                <p>Find answers to common questions about our services and processes</p>
+            </div>
+            
+            <div class="faq-container">
+                <!-- Sessions Category -->
+                <div class="faq-category">
+                    <h3><i class="fas fa-comments"></i> Sessions</h3>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>What type of sessions do you offer?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We offer both online video sessions and in-person sessions at designated locations. Online sessions provide flexibility and convenience, while in-person sessions offer a more personal connection. All sessions are structured and led by qualified mental wellness guides.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>How long is each session?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Our standard sessions are 50 minutes long. We also offer extended 75-minute sessions for more in-depth work and introductory 30-minute sessions for those who want to explore our approach before committing to a full session.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>How many sessions will I need?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>This varies based on individual needs and goals. After your initial assessment, we'll provide a recommendation. Some people benefit from just a few sessions to address specific concerns, while others prefer ongoing support. We'll work with you to determine what's most helpful for your situation.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Privacy & Confidentiality Category -->
+                <div class="faq-category">
+                    <h3><i class="fas fa-lock"></i> Privacy & Confidentiality</h3>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Is my information kept confidential?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Absolutely. All client information is kept strictly confidential in accordance with professional standards and privacy laws. We use encrypted platforms for communication and secure storage for all records. Your privacy is our highest priority.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Are your sessions anonymous?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>While we require basic information for scheduling and safety purposes, we offer the option to use a pseudonym during sessions if that makes you more comfortable. Our platform is designed to protect your identity while ensuring you receive quality support.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>What happens in emergency situations?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>While MindSettler focuses on psycho-education and wellness support, we have protocols for emergency situations. If there's imminent risk of harm to self or others, we're ethically obligated to take appropriate action to ensure safety. This is clearly outlined in our informed consent agreement.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pricing & Payment Category -->
+                <div class="faq-category">
+                    <h3><i class="fas fa-dollar-sign"></i> Pricing & Payment</h3>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>How much do sessions cost?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Our standard 50-minute session is $85. Extended sessions (75 minutes) are $120, and introductory sessions (30 minutes) are $45. We also offer package deals for multiple sessions. All prices are clearly listed before booking.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Do you accept insurance?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We are considered an out-of-network provider. We can provide you with a superbill to submit to your insurance company for potential reimbursement. We recommend checking with your insurance provider about their out-of-network mental health benefits.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>What payment methods do you accept?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We accept all major credit cards, debit cards, and PayPal. Payment is collected at the time of booking to secure your appointment. For package deals, payment is required upfront for the entire package.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Booking Process Category -->
+                <div class="faq-category">
+                    <h3><i class="fas fa-calendar-alt"></i> Booking Process</h3>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>How do I book a session?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>You can book a session directly through our website. Click the "Book Now" button, complete our brief intake form, select your preferred session type and time, and make your payment. You'll receive a confirmation email with all the details and any necessary links for online sessions.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>What is your cancellation policy?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We require 24 hours notice for cancellations or rescheduling. Cancellations made with less than 24 hours notice will be charged 50% of the session fee. Missed appointments without notice will be charged the full session fee. We understand emergencies happen and review these cases individually.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Can I change my session type after booking?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, you can change from online to in-person (or vice versa) with at least 24 hours notice, subject to availability. You can do this by contacting us through your booking confirmation email or through your client portal.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>MindSettler</h3>
+                    <p>An online psycho-education and mental well-being platform that helps individuals understand their mental health and navigate life challenges.</p>
+                    <div class="social-icons" style="margin-top: 20px;">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home" class="footer-links">Home</a></li>
+                        <li><a href="#about" class="footer-links">About Us</a></li>
+                        <li><a href="#education" class="footer-links">Psycho-Education</a></li>
+                        <li><a href="#how-it-works" class="footer-links">How It Works</a></li>
+                        <li><a href="#different" class="footer-links">What Makes Us Different</a></li>
+                        <li><a href="#faqs" class="footer-links">FAQs</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope" style="margin-right: 10px; color: var(--secondary);"></i> hello@mindsettler.com</li>
+                        <li><i class="fas fa-phone" style="margin-right: 10px; color: var(--secondary);"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt" style="margin-right: 10px; color: var(--secondary);"></i> 123 Wellness Street</li>
+                    </ul>
+                    
+                    <div class="policy-links">
+                        <a href="#" class="policy-link" data-policy="privacy">Privacy Policy</a>
+                        <a href="#" class="policy-link" data-policy="refund">Non-Refund Policy</a>
+                        <a href="#" class="policy-link" data-policy="confidentiality">Confidentiality Policy</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 MindSettler. All rights reserved. | 
+                    <a href="#" class="footer-links" data-policy="privacy">Privacy Policy</a> | 
+                    <a href="#" class="footer-links" data-policy="refund">Non-Refund Policy</a> | 
+                    <a href="#" class="footer-links" data-policy="confidentiality">Confidentiality Policy</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Policy Modals -->
+    <div class="policy-modal" id="privacy-policy-modal">
+        <div class="policy-content">
+            <div class="policy-header">
+                <h2>Privacy Policy</h2>
+                <button class="close-policy">&times;</button>
+            </div>
+            <div class="policy-body">
+                <p><strong>Last Updated:</strong> December 2023</p>
+                
+                <h3>1. Information We Collect</h3>
+                <p>MindSettler collects information to provide better services to all our users. We collect information in the following ways:</p>
+                <ul>
+                    <li><strong>Information you give us:</strong> When you register for MindSettler, we ask for personal information like your name, email address, and telephone number.</li>
+                    <li><strong>Information we get from your use of our services:</strong> We collect information about the services that you use and how you use them.</li>
+                    <li><strong>Session information:</strong> We maintain records of your session bookings, preferences, and wellness journey progress.</li>
+                </ul>
+                
+                <h3>2. How We Use Information</h3>
+                <p>We use the information we collect from all our services to provide, maintain, protect and improve them, to develop new ones, and to protect MindSettler and our users. We also use this information to offer you tailored content.</p>
+                
+                <h3>3. Information Security</h3>
+                <p>We work hard to protect MindSettler and our users from unauthorized access to or unauthorized alteration, disclosure or destruction of information we hold. In particular:</p>
+                <ul>
+                    <li>We encrypt many of our services using SSL</li>
+                    <li>We review our information collection, storage and processing practices</li>
+                    <li>We restrict access to personal information to MindSettler employees and contractors</li>
+                </ul>
+                
+                <h3>4. Your Rights</h3>
+                <p>You have the right to access, correct, or delete your personal information. You can also object to our processing of your personal information, ask us to restrict processing of your personal information or request portability of your personal information.</p>
+                
+                <h3>5. Changes</h3>
+                <p>Our Privacy Policy may change from time to time. We will post any privacy policy changes on this page and, if the changes are significant, we will provide a more prominent notice.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="policy-modal" id="refund-policy-modal">
+        <div class="policy-content">
+            <div class="policy-header">
+                <h2>Non-Refund Policy</h2>
+                <button class="close-policy">&times;</button>
+            </div>
+            <div class="policy-body">
+                <p><strong>Effective Date:</strong> December 2023</p>
+                
+                <h3>1. Session Payments</h3>
+                <p>All payments for MindSettler sessions are final and non-refundable. Once a session has been booked and payment has been processed, the amount paid is not eligible for refund under any circumstances.</p>
+                
+                <h3>2. Cancellation Policy</h3>
+                <p>While we do not offer refunds, we do allow session rescheduling according to the following terms:</p>
+                <ul>
+                    <li><strong>24+ hours notice:</strong> Sessions can be rescheduled at no charge with at least 24 hours notice</li>
+                    <li><strong>Less than 24 hours notice:</strong> Sessions rescheduled with less than 24 hours notice will be charged 50% of the session fee</li>
+                    <li><strong>No show:</strong> Sessions missed without any notice will be charged the full session fee</li>
+                </ul>
+                
+                <h3>3. Package Sessions</h3>
+                <p>For clients who purchase session packages:</p>
+                <ul>
+                    <li>All package sales are final and non-refundable</li>
+                    <li>Unused sessions in a package do not expire and can be used at any time</li>
+                    <li>Package sessions are transferable between online and offline formats</li>
+                    <li>Packages cannot be transferred to another individual</li>
+                </ul>
+                
+                <h3>4. Exceptional Circumstances</h3>
+                <p>In truly exceptional circumstances (medical emergencies, natural disasters, etc.), we may offer session credits at our discretion. These credits will be valid for 6 months from the date of issue.</p>
+                
+                <h3>5. Agreement</h3>
+                <p>By booking a session with MindSettler, you acknowledge and agree to this Non-Refund Policy. We recommend reviewing your schedule carefully before booking to ensure you can attend at the selected time.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="policy-modal" id="confidentiality-policy-modal">
+        <div class="policy-content">
+            <div class="policy-header">
+                <h2>Confidentiality Policy</h2>
+                <button class="close-policy">&times;</button>
+            </div>
+            <div class="policy-body">
+                <p><strong>Required Acknowledgement Before First Session</strong></p>
+                
+                <h3>1. Confidentiality Commitment</h3>
+                <p>MindSettler is committed to protecting your privacy and maintaining the confidentiality of all information shared during our sessions. Everything discussed in our sessions is strictly confidential.</p>
+                
+                <h3>2. What We Protect</h3>
+                <p>We protect all information including but not limited to:</p>
+                <ul>
+                    <li>Personal identification information</li>
+                    <li>Session content and discussions</li>
+                    <li>Wellness assessments and progress notes</li>
+                    <li>Payment information</li>
+                    <li>Communication records</li>
+                </ul>
+                
+                <h3>3. Limitations to Confidentiality</h3>
+                <p>There are specific situations where we are legally and ethically required to break confidentiality:</p>
+                <ul>
+                    <li><strong>Imminent risk of harm:</strong> If we believe you are at imminent risk of harming yourself or others</li>
+                    <li><strong>Child or vulnerable adult abuse:</strong> Suspected or disclosed abuse of children or vulnerable adults</li>
+                    <li><strong>Court order:</strong> If we receive a court order or subpoena</li>
+                    <li><strong>Supervision:</strong> Your case may be discussed anonymously in professional supervision</li>
+                </ul>
+                
+                <h3>4. Data Security Measures</h3>
+                <p>We implement multiple security measures to protect your information:</p>
+                <ul>
+                    <li>Encrypted communication platforms for online sessions</li>
+                    <li>Secure, password-protected electronic records</li>
+                    <li>Limited access to confidential information</li>
+                    <li>Regular security audits and updates</li>
+                </ul>
+                
+                <h3>5. Your Rights</h3>
+                <p>You have the right to:</p>
+                <ul>
+                    <li>Access your session records</li>
+                    <li>Request corrections to your information</li>
+                    <li>Know who has accessed your records</li>
+                    <li>File a complaint if you believe your confidentiality has been breached</li>
+                </ul>
+                
+                <div class="required-checkbox">
+                    <label>
+                        <input type="checkbox" id="confidentiality-agreement">
+                        I have read and understood the Confidentiality Policy. I acknowledge that I must check this box before proceeding with my first session.
+                    </label>
+                </div>
+                
+                <p><strong>Note:</strong> This acknowledgement is required before your first session can proceed. Your guide will verify this agreement during your initial consultation.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // FAQ Accordion Functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const isActive = answer.classList.contains('active');
+                
+                // Close all other FAQs
+                document.querySelectorAll('.faq-answer').forEach(item => {
+                    item.classList.remove('active');
+                });
+                document.querySelectorAll('.faq-question').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Open clicked FAQ if it wasn't already active
+                if(!isActive) {
+                    answer.classList.add('active');
+                    question.classList.add('active');
+                }
+            });
+        });
+        
+        // Add animation to steps on scroll
+        const observerOptions = {
+            threshold: 0.3
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe elements for animation
+        document.querySelectorAll('.step, .education-card, .difference-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
+        
+        // Open first FAQ by default
+        document.querySelector('.faq-question').click();
+        
+        // Policy Modal Functionality
+        const policyLinks = document.querySelectorAll('[data-policy]');
+        const policyModals = document.querySelectorAll('.policy-modal');
+        const closeButtons = document.querySelectorAll('.close-policy');
+        
+        // Open policy modal
+        policyLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const policyType = this.getAttribute('data-policy');
+                const modalId = `${policyType}-policy-modal`;
+                const modal = document.getElementById(modalId);
+                
+                if (modal) {
+                    // Close all other modals first
+                    policyModals.forEach(m => m.classList.remove('active'));
+                    // Open the selected modal
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+        
+        // Close policy modal
+        closeButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const modal = this.closest('.policy-modal');
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+        
+        // Close modal when clicking outside
+        policyModals.forEach(modal => {
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                policyModals.forEach(modal => {
+                    if (modal.classList.contains('active')) {
+                        modal.classList.remove('active');
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            }
+        });
+        
+        // Confidentiality agreement checkbox validation
+        const confidentialityCheckbox = document.getElementById('confidentiality-agreement');
+        if (confidentialityCheckbox) {
+            confidentialityCheckbox.addEventListener('change', function() {
+                if (this.checked) {
+                    console.log('Confidentiality policy acknowledged');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

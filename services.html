@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindSettler - Corporate & Organizational Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #3F2965;
+            --secondary: #Dd1764;
+            --light: #f8f9fa;
+            --dark: #2c1a47;
+            --light-purple: #f5f2f9;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            color: #333;
+            line-height: 1.6;
+            background-color: #fefefe;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation - UPDATED */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(63, 41, 101, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            transform: translateY(-2px);
+        }
+
+        .logo i {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links li {
+            margin-left: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+            transition: var(--transition);
+            padding: 8px 16px;
+            border-radius: 4px;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+            background-color: var(--light-purple);
+        }
+
+        /* UPDATED BUTTONS */
+        .nav-button {
+            background-color: var(--secondary);
+            color: white;
+            padding: 10px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-block;
+            border: 2px solid var(--secondary);
+        }
+
+        .nav-button:hover {
+            background-color: white;
+            color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(221, 23, 100, 0.2);
+        }
+
+        .cta-button {
+            background-color: var(--secondary);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-block;
+            border: 2px solid var(--secondary);
+            font-size: 1.1rem;
+        }
+
+        .cta-button:hover {
+            background-color: white;
+            color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(221, 23, 100, 0.25);
+        }
+
+        /* Hero Section */
+        .corporate-hero {
+            background: linear-gradient(rgba(63, 41, 101, 0.9), rgba(63, 41, 101, 0.85)), url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 120px 0;
+            text-align: center;
+        }
+
+        .corporate-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .corporate-hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            opacity: 0.95;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 4px;
+            background-color: var(--secondary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        /* Corporate Services */
+        .corporate-services {
+            background-color: var(--light-purple);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(63, 41, 101, 0.1);
+            transition: var(--transition);
+            border-top: 5px solid var(--primary);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(63, 41, 101, 0.15);
+            border-top-color: var(--secondary);
+        }
+
+        .service-icon {
+            background-color: var(--primary);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            font-size: 2.5rem;
+        }
+
+        .service-content {
+            padding: 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-content h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.6rem;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 25px;
+            flex-grow: 1;
+        }
+
+        .service-features li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .service-features i {
+            color: var(--secondary);
+            margin-right: 10px;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        /* Workshops Section */
+        .workshops-section {
+            background-color: white;
+        }
+
+        .workshop-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .workshop-card {
+            background-color: var(--light-purple);
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(63, 41, 101, 0.08);
+            transition: var(--transition);
+            border-left: 4px solid var(--primary);
+        }
+
+        .workshop-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(63, 41, 101, 0.12);
+            border-left-color: var(--secondary);
+        }
+
+        .workshop-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .workshop-card .duration {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        /* Group Sessions */
+        .group-sessions {
+            background-color: var(--light-purple);
+        }
+
+        .group-container {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+            margin-top: 40px;
+        }
+
+        .group-info {
+            flex: 1;
+        }
+
+        .group-visual {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .group-item {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(63, 41, 101, 0.08);
+            border-top: 3px solid var(--primary);
+            transition: var(--transition);
+        }
+
+        .group-item:hover {
+            transform: translateX(10px);
+            border-top-color: var(--secondary);
+        }
+
+        .group-item h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .group-item i {
+            color: var(--secondary);
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        /* Collaborations */
+        .collaborations {
+            background-color: white;
+        }
+
+        .collab-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .collab-item {
+            text-align: center;
+            padding: 30px;
+            background-color: var(--light-purple);
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+
+        .collab-item:hover {
+            transform: scale(1.05);
+            background-color: white;
+            box-shadow: 0 10px 25px rgba(63, 41, 101, 0.1);
+        }
+
+        .collab-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        /* Contact Form */
+        .contact-section {
+            background-color: var(--light-purple);
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(63, 41, 101, 0.1);
+        }
+
+        .contact-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .contact-header h3 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .contact-form {
+            padding: 40px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            flex: 1;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(63, 41, 101, 0.1);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .checkbox-group {
+            margin: 25px 0;
+        }
+
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            font-weight: normal;
+            cursor: pointer;
+        }
+
+        .checkbox-group input {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--secondary);
+        }
+
+        .submit-btn {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: block;
+            margin: 0 auto;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(221, 23, 100, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column h3 {
+            color: var(--secondary);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+
+        .footer-links {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links:hover {
+            color: var(--secondary);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        .social-icons a {
+            color: white;
+            margin-right: 15px;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .group-container {
+                flex-direction: column;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 5px 10px;
+            }
+            
+            .corporate-hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .corporate-hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.3rem;
+            }
+            
+            /* Mobile nav adjustments */
+            .nav-button, .nav-links a {
+                padding: 8px 14px;
+                font-size: 0.9rem;
+            }
+            
+            .contact-form {
+                padding: 25px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+            }
+            
+            .nav-links li {
+                margin: 5px 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .nav-links a, .nav-button {
+                display: block;
+                width: 100%;
+                padding: 10px;
+            }
+            
+            .corporate-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .service-card, .workshop-card, .group-item {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation - UPDATED -->
+    <header>
+        <div class="container">
+            <div class="nav-container">
+                <!-- Logo now wraps in an anchor tag -->
+                <a href="sessions.html" class="logo">
+                    <i class="fas fa-brain"></i>
+                    <span class="logo-text">MindSettler</span>
+                </a>
+                <ul class="nav-links">
+                    <!-- Removed all individual section links -->
+                    <!-- Only keeping Booking Sessions and Start Your Journey -->
+                    <li><a href="booking1.html" class="nav-button">Booking Sessions</a></li>
+                    <li><a href="services.html" class="nav-button">Cooperative Services</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="corporate-hero" id="home">
+        <div class="container">
+            <h1>Elevate Your Organization's Mental Wellness</h1>
+            <p>Comprehensive mental health solutions designed for corporations, educational institutions, and organizations. Foster resilience, productivity, and wellbeing across your teams.</p>
+            <a href="#contact-form" class="cta-button">Request Corporate Services</a>
+        </div>
+    </section>
+
+    <!-- Corporate Services -->
+    <section id="corporate-services" class="corporate-services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Corporate & Organizational Services</h2>
+                <p>Tailored mental wellness programs designed to meet the unique needs of your organization</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Corporate Wellness Programs</h3>
+                        <p>Comprehensive mental health initiatives for businesses of all sizes</p>
+                        
+                        <ul class="service-features">
+                            <li><i class="fas fa-check-circle"></i> Employee mental health assessments</li>
+                            <li><i class="fas fa-check-circle"></i> Stress management workshops</li>
+                            <li><i class="fas fa-check-circle"></i> Leadership mental fitness training</li>
+                            <li><i class="fas fa-check-circle"></i> Burnout prevention programs</li>
+                            <li><i class="fas fa-check-circle"></i> Customizable wellness packages</li>
+                        </ul>
+                        
+                        <p style="color: var(--secondary); font-weight: 600; margin-top: auto;">
+                            <i class="fas fa-chart-line"></i> Proven to reduce absenteeism by 30%
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Educational Institutions</h3>
+                        <p>Mental health support for students, faculty, and staff</p>
+                        
+                        <ul class="service-features">
+                            <li><i class="fas fa-check-circle"></i> Student wellness workshops</li>
+                            <li><i class="fas fa-check-circle"></i> Faculty stress management</li>
+                            <li><i class="fas fa-check-circle"></i> Exam anxiety reduction programs</li>
+                            <li><i class="fas fa-check-circle"></i> Peer support training</li>
+                            <li><i class="fas fa-check-circle"></i> Crisis response planning</li>
+                        </ul>
+                        
+                        <p style="color: var(--secondary); font-weight: 600; margin-top: auto;">
+                            <i class="fas fa-users"></i> Serving universities, colleges, and schools
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Non-Profit Organizations</h3>
+                        <p>Mental health support for staff and beneficiaries</p>
+                        
+                        <ul class="service-features">
+                            <li><i class="fas fa-check-circle"></i> Trauma-informed care training</li>
+                            <li><i class="fas fa-check-circle"></i> Compassion fatigue prevention</li>
+                            <li><i class="fas fa-check-circle"></i> Volunteer mental health support</li>
+                            <li><i class="fas fa-check-circle"></i> Community mental health initiatives</li>
+                            <li><i class="fas fa-check-circle"></i> Grant-funded program development</li>
+                        </ul>
+                        
+                        <p style="color: var(--secondary); font-weight: 600; margin-top: auto;">
+                            <i class="fas fa-hand-holding-heart"></i> Special rates for non-profits
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workshops -->
+    <section class="workshops-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Workshops & Training Programs</h2>
+                <p>Interactive sessions designed to build mental health literacy and resilience skills</p>
+            </div>
+            
+            <div class="workshop-types">
+                <div class="workshop-card">
+                    <h3>Mental Health First Aid</h3>
+                    <span class="duration">Half-day or Full-day Workshop</span>
+                    <p>Equip your team with skills to recognize and respond to mental health challenges in the workplace. Learn intervention strategies and support pathways.</p>
+                    <ul style="margin-top: 15px; padding-left: 20px;">
+                        <li>Recognizing signs of distress</li>
+                        <li>Effective communication techniques</li>
+                        <li>Resource navigation</li>
+                        <li>Self-care for helpers</li>
+                    </ul>
+                </div>
+                
+                <div class="workshop-card">
+                    <h3>Stress Resilience Building</h3>
+                    <span class="duration">2-4 Hour Workshop</span>
+                    <p>Practical strategies to manage workplace stress and prevent burnout. Evidence-based techniques for building psychological resilience.</p>
+                    <ul style="margin-top: 15px; padding-left: 20px;">
+                        <li>Stress identification tools</li>
+                        <li>Cognitive restructuring techniques</li>
+                        <li>Mindfulness practices</li>
+                        <li>Work-life integration strategies</li>
+                    </ul>
+                </div>
+                
+                <div class="workshop-card">
+                    <h3>Emotional Intelligence at Work</h3>
+                    <span class="duration">3-6 Hour Training</span>
+                    <p>Develop emotional intelligence skills to enhance teamwork, leadership, and workplace relationships. Improve communication and conflict resolution.</p>
+                    <ul style="margin-top: 15px; padding-left: 20px;">
+                        <li>Self-awareness development</li>
+                        <li>Emotion regulation strategies</li>
+                        <li>Empathy building exercises</li>
+                        <li>Relationship management skills</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Group Sessions -->
+    <section class="group-sessions">
+        <div class="container">
+            <div class="section-title">
+                <h2>Group Sessions & Support</h2>
+                <p>Facilitated group experiences for shared learning and support</p>
+            </div>
+            
+            <div class="group-container">
+                <div class="group-info">
+                    <h3 style="color: var(--primary); margin-bottom: 20px; font-size: 1.8rem;">Customizable Group Formats</h3>
+                    <p style="margin-bottom: 20px; font-size: 1.1rem;">Our group sessions are designed to create safe spaces for shared experiences and collective growth. We offer multiple formats to suit your organization's needs.</p>
+                    <p style="margin-bottom: 30px; font-size: 1.1rem;">All group sessions are facilitated by experienced mental wellness guides who create structured, confidential environments for meaningful discussion and skill-building.</p>
+                    
+                    <div style="background-color: white; padding: 25px; border-radius: 10px; border-left: 4px solid var(--secondary);">
+                        <h4 style="color: var(--primary); margin-bottom: 10px;">Group Benefits</h4>
+                        <p>Groups provide peer support, reduce isolation, and create community around mental wellness. Participants often report feeling validated and gaining multiple perspectives on shared challenges.</p>
+                    </div>
+                </div>
+                
+                <div class="group-visual">
+                    <div class="group-item">
+                        <h4><i class="fas fa-users"></i> Departmental Groups</h4>
+                        <p>Team-specific sessions addressing shared workplace challenges and dynamics.</p>
+                    </div>
+                    
+                    <div class="group-item">
+                        <h4><i class="fas fa-comments"></i> Peer Support Circles</h4>
+                        <p>Regular facilitated meetings for ongoing support and skill reinforcement.</p>
+                    </div>
+                    
+                    <div class="group-item">
+                        <h4><i class="fas fa-theater-masks"></i> Theme-Based Groups</h4>
+                        <p>Focus on specific topics like anxiety management, work-life balance, or grief.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collaborations -->
+    <section class="collaborations">
+        <div class="container">
+            <div class="section-title">
+                <h2>Partnerships & Collaborations</h2>
+                <p>Working together to create comprehensive mental wellness ecosystems</p>
+            </div>
+            
+            <div class="collab-container">
+                <div class="collab-item">
+                    <div class="collab-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h4 style="color: var(--primary); margin-bottom: 10px;">Long-Term Partnerships</h4>
+                    <p>Ongoing collaborations with regular programming and support</p>
+                </div>
+                
+                <div class="collab-item">
+                    <div class="collab-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h4 style="color: var(--primary); margin-bottom: 10px;">Event Collaborations</h4>
+                    <p>Mental wellness components for conferences, retreats, and special events</p>
+                </div>
+                
+                <div class="collab-item">
+                    <div class="collab-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h4 style="color: var(--primary); margin-bottom: 10px;">Program Development</h4>
+                    <p>Co-creating custom mental health initiatives for your organization</p>
+                </div>
+                
+                <div class="collab-item">
+                    <div class="collab-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h4 style="color: var(--primary); margin-bottom: 10px;">Train-the-Trainer</h4>
+                    <p>Equip your staff to deliver mental wellness content internally</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section id="contact-form" class="contact-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Request Corporate Services</h2>
+                <p>Get in touch to discuss how MindSettler can support your organization's mental wellness needs</p>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-header">
+                    <h3>Organization Inquiry Form</h3>
+                    <p>We'll respond within 24-48 hours to discuss your needs</p>
+                </div>
+                
+                <form class="contact-form" id="corporate-inquiry-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="organization-name">Organization Name *</label>
+                            <input type="text" id="organization-name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="organization-type">Organization Type *</label>
+                            <select id="organization-type" class="form-control" required>
+                                <option value="">Select type</option>
+                                <option value="corporate">Corporate/Business</option>
+                                <option value="education">Educational Institution</option>
+                                <option value="nonprofit">Non-Profit Organization</option>
+                                <option value="healthcare">Healthcare Facility</option>
+                                <option value="government">Government Agency</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="contact-name">Your Name *</label>
+                            <input type="text" id="contact-name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-title">Your Title *</label>
+                            <input type="text" id="contact-title" class="form-control" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="contact-email">Email Address *</label>
+                            <input type="email" id="contact-email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-phone">Phone Number</label>
+                            <input type="tel" id="contact-phone" class="form-control">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="organization-size">Approximate Organization Size</label>
+                        <select id="organization-size" class="form-control">
+                            <option value="">Select size</option>
+                            <option value="1-50">1-50 employees</option>
+                            <option value="51-200">51-200 employees</option>
+                            <option value="201-500">201-500 employees</option>
+                            <option value="501-1000">501-1,000 employees</option>
+                            <option value="1000+">1,000+ employees</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="services-interest">Services of Interest *</label>
+                        <select id="services-interest" class="form-control" required multiple style="height: 120px;">
+                            <option value="workshops">Workshops & Training</option>
+                            <option value="group-sessions">Group Sessions</option>
+                            <option value="wellness-program">Corporate Wellness Program</option>
+                            <option value="leadership-training">Leadership Mental Fitness</option>
+                            <option value="individual-sessions">Individual Employee Sessions</option>
+                            <option value="program-development">Custom Program Development</option>
+                            <option value="consultation">Consultation & Assessment</option>
+                        </select>
+                        <small style="color: #666; display: block; margin-top: 5px;">Hold Ctrl/Cmd to select multiple options</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Tell us about your organization's needs *</label>
+                        <textarea id="message" class="form-control" placeholder="Please describe what mental wellness support your organization is seeking, any specific challenges you're facing, and your goals..." required></textarea>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" required>
+                            I agree to the <a href="#" style="color: var(--secondary);">Privacy Policy</a> and understand that a MindSettler representative will contact me regarding this inquiry.
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Submit Inquiry</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>MindSettler</h3>
+                    <p>An online psycho-education and mental well-being platform that helps individuals understand their mental health and navigate life challenges.</p>
+                    <div class="social-icons" style="margin-top: 20px;">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Corporate Services</h3>
+                    <ul>
+                        <li><a href="#corporate-services" class="footer-links">Services Overview</a></li>
+                        <li><a href="#workshops" class="footer-links">Workshops</a></li>
+                        <li><a href="#group-sessions" class="footer-links">Group Sessions</a></li>
+                        <li><a href="#collaborations" class="footer-links">Collaborations</a></li>
+                        <li><a href="sessions.html" class="footer-links">Individual Sessions</a></li>
+                        <li><a href="index.html" class="footer-links">Home</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Corporate Team</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope" style="margin-right: 10px; color: var(--secondary);"></i> corporate@mindsettler.com</li>
+                        <li><i class="fas fa-phone" style="margin-right: 10px; color: var(--secondary);"></i> +1 (555) 987-6543</li>
+                        <li><i class="fas fa-map-marker-alt" style="margin-right: 10px; color: var(--secondary);"></i> Corporate Office: 456 Business Avenue</li>
+                        <li><i class="fas fa-clock" style="margin-right: 10px; color: var(--secondary);"></i> Mon-Fri: 8am-6pm EST</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 MindSettler. All rights reserved. | <a href="#" style="color: var(--secondary);">Privacy Policy</a> | <a href="#" style="color: var(--secondary);">Non-Refund Policy</a> | <a href="#" style="color: var(--secondary);">Confidentiality Policy</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
