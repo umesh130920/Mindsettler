@@ -48,18 +48,23 @@ const Journey = () => {
       {/* Journey Steps */}
       <SectionWrapper className="py-20 px-4">
         <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
-            {journeySteps.map((step, index) => (
-              <JourneyStep
-                key={step.number}
-                number={step.number}
-                title={step.title}
-                description={step.description}
-                icon={step.icon}
-                delay={index * 0.2}
-                isLast={index === journeySteps.length - 1}
-              />
-            ))}
+          <div className="relative">
+            {/* Progress Line */}
+            <div className="hidden md:block absolute top-10 left-0 right-0 h-1 bg-gradient-to-r from-[#3F2965] via-[#DD1764] to-[#3F2965] opacity-20" />
+
+            <div className="grid md:grid-cols-4 gap-8 relative">
+              {journeySteps.map((step, index) => (
+                <JourneyStep
+                  key={step.number}
+                  number={step.number}
+                  title={step.title}
+                  description={step.description}
+                  icon={step.icon}
+                  delay={index * 0.2}
+                  isLast={index === journeySteps.length - 1}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </SectionWrapper>

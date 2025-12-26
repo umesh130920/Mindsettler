@@ -45,11 +45,6 @@ const JourneyStep = ({
       <p className="text-gray-600 max-w-md leading-relaxed">
         {description}
       </p>
-
-      {/* Connector Line (if not last) */}
-      {!isLast && (
-        <div className="hidden md:block absolute top-10 left-1/2 w-0.5 h-full bg-gradient-to-b from-[#3F2965] to-[#DD1764] opacity-30" />
-      )}
     </motion.div>
   );
 };
