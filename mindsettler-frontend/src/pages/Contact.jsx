@@ -224,7 +224,7 @@ const Contact = () => {
           <Button 
             to="/corporate" 
             variant="outline" 
-            className="border-white text-white hover:bg-white hover:text-[#3F2965]"
+            className="border-white text-white hover:bg-white hover:!text-[#dd1787]"
             size="lg"
           >
             Learn About Corporate Services
