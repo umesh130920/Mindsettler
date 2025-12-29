@@ -78,7 +78,7 @@ const Footer = () => {
           viewport={{ once: true }}
           className="border-t border-white/20 mt-8 pt-8 text-center text-sm text-white/60"
         >
-          <p>&copy; {currentYear} MindSettler by Parnika. All rights reserved.</p>
+          <p>&copy; {currentYear} MindSettler . All rights reserved.</p>
           <p className="mt-2">Confidentiality and trust are our priorities.</p>
         </motion.div>
       </div>
